@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+const {Schema, model} = require("mongoose");
 
-const productSchema = new mongoose.Schema({
+const productSchema = new Schema({
     name:{
         type: String,
         required: true,
@@ -32,6 +32,6 @@ const productSchema = new mongoose.Schema({
 })
 
 // create new collection
-const Product = new mongoose.model("Product",productSchema)
+const Product = new model("Product",productSchema)
 
 module.exports =Product;
