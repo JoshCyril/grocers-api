@@ -28,11 +28,12 @@ const productSchema = new Schema({
         min: 10,
         max: 90
     },
-    category: {
+    category_id: {
         type: String,
         required: true,
     },
-    imgUrls: [String]
+    imgUrls: [String],
+    tags: [String]
 })
 
 // create new collection

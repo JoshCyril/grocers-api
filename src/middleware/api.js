@@ -3,10 +3,12 @@ const router = express.Router();
 const bcrypt = require("bcrypt")
 const saltRounds = 10;
 
+//! Collections
 const User = require('../models/user');
 const Product = require("../models/product");
-
-const upload = require("../middleware/upload");
+const Category = require("../models/category");
+const Order = require("../models/order");
+const Wishlist = require("../models/wishlist");
 
 let arrName = [];
 let arrEmail = [];
@@ -168,6 +170,18 @@ function getDBName(chkDB, res) {
                 break;
             case "product":
                 CtrDB = Product
+                isDBExits = true
+                break;
+            case "category":
+                CtrDB = Category
+                isDBExits = true
+                break;
+            case "order":
+                CtrDB = Order
+                isDBExits = true
+                break;
+            case "wishlist":
+                CtrDB = Wishlist
                 isDBExits = true
                 break;
             default:

@@ -5,7 +5,7 @@ mongoose.connect("mongodb+srv://gro-api:w942SLz51gJa1a69@cluster0.7wpt8x6.mongod
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
-    console.log("Connection is success")
+    console.log("DB Connected")
 }).catch((e) => {
-    console.log("Not connected :" + e)
+    console.log("Not connected: " + e)
 })
