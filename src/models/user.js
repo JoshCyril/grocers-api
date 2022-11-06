@@ -1,7 +1,7 @@
 const {Schema, model} = require("mongoose");
 const validator = require("validator")
 
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
     name:{
         type: String,
         required: true,
@@ -29,6 +29,6 @@ const userSchema = new mongoose.Schema({
 })
 
 // create new collection
-const User = new mongoose.model("User",userSchema)
+const User = new model("User",userSchema)
 
 module.exports =User;

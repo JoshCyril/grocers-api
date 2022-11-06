@@ -28,6 +28,10 @@ const productSchema = new Schema({
     category:{
         type: String,
         required: true,
+    },
+    fname: {
+    type: String,
+    required: [true, "Uploaded file must have a name"],
     }
 })
 

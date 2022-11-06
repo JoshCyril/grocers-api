@@ -112,21 +112,9 @@ router.post('/add/user',async (req,res,next)=>{
 router.post('/add',async (req,res,next)=>{
     getDBName(req.query._db, res)
     if (isDBExits){
-        await upload(req, res);
-        console.log(req.file);
-        // const insertResult = await CtrDB.create({
-        //     name: req.body.name,
-        //     password: hashedPwd,
-        //     email:req.body.email,
-        //     isAdmin:req.body.isAdmin
-        // });
-        if (req.file == undefined) {
-            return res.send({
-            message: "You must select a file.",
-            });
-        }
+        
         CtrDB.save().then(()=>{
-            res.status(201).send(insertResult);
+            res.status(201).send(CtrDB);
         }).catch((e)=>{
             res.status(400).send(e);
         })
