@@ -10,6 +10,7 @@ const productSchema = new Schema({
         unique: [true, "This product already exists."],
         minlength: 3
     },
+    description: String,
     price: {
         type: Number,
         required: true,
@@ -19,15 +20,16 @@ const productSchema = new Schema({
         type: Number,
         required: true,
     },
-    isDiscounted: {
-        type: Boolean,
-        default: false,
-    },
-    discountPer: {
-        type: Number,
-        min: 10,
-        max: 90
-    },
+    discount: [{
+        isDiscounted: {
+            type: Boolean,
+            default: false,
+        },
+        percentage: {
+            type: Number,
+            default: 0
+        }
+    }],
     category_id: {
         type: String,
         required: true,
