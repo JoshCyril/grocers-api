@@ -29,10 +29,7 @@ const productSchema = new Schema({
         type: String,
         required: true,
     },
-    fname: {
-    type: String,
-    required: [true, "Uploaded file must have a name"],
-    }
+    imgUrls: [String]
 })
 
 // create new collection
