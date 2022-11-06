@@ -1,31 +1,34 @@
-const {Schema, model} = require("mongoose");
+const {
+    Schema,
+    model
+} = require("mongoose");
 
 const productSchema = new Schema({
-    name:{
+    name: {
         type: String,
         required: true,
-        unique:[true, "This product already exists."],
-        minlength:3
+        unique: [true, "This product already exists."],
+        minlength: 3
     },
-    price:{
+    price: {
         type: Number,
         required: true,
         min: 0.00
     },
-    quantity:{
+    quantity: {
         type: Number,
         required: true,
     },
-    isDiscounted:{
+    isDiscounted: {
         type: Boolean,
         default: false,
     },
-    discountPer:{
+    discountPer: {
         type: Number,
         min: 10,
-        max:90
+        max: 90
     },
-    category:{
+    category: {
         type: String,
         required: true,
     },
@@ -33,6 +36,6 @@ const productSchema = new Schema({
 })
 
 // create new collection
-const Product = new model("Product",productSchema)
+const Product = new model("Product", productSchema)
 
-module.exports =Product;
+module.exports = Product;
