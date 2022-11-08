@@ -32,12 +32,25 @@ router.get("/login", async (req, res) => {
             const cmp = await bcrypt.compare(req.query.password, user.password);
             if (cmp) {
                 //   ..... further code to maintain authentication like jwt or sessions
-                res.status(202).send(`${user.name} Auth Successful`);
+                res.send({
+                    isValid: true,
+                    message: "Auth success for [" + user.name + "]",
+                    name: user.name,
+                    _id: user._id
+                });
             } else {
-                res.status(406).send(`${user.name} Wrong password.`);
+                res.send({
+                    isValid: false,
+                    message: "Auth failed for [" + user.name + "], invalid password",
+                    reason: "Please check your password it is case sensitive",
+                });
             }
         } else {
-            res.status(406).send("Wrong username / Email ID.");
+            res.status(406).send({
+                isValid: false,
+                message: "Username / Email ID doesn't exist",
+                reason: "Please enter a valid Username / Email ID, try to signup again"
+            });
         }
 
     } catch (error) {
@@ -55,13 +68,13 @@ router.get('/reg', (req, res, next) => {
         "name": 1,
         "email": 1
     }).then((data) => {
-        data.map(e => {
-            arrName.push(e.name)
-            arrEmail.push(e.email)
-        });
-        arrMain.push(arrName, arrEmail)
-        // console.log(arrName, arrEmail)
-        res.send(arrMain);
+        // data.map(e => {
+        //     arrName.push(e.name)
+        //     arrEmail.push(e.email)
+        // });
+        // arrMain.push(arrName, arrEmail)
+        // // console.log(arrName, arrEmail)
+        res.send(data);
     }).catch(next);
 });
 
