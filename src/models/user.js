@@ -7,14 +7,10 @@ const validator = require("validator")
 const userSchema = new Schema({
     name: {
         type: String,
-        required: true,
-        unique: [true, "This username is taken."],
         minlength: 3
     },
     email: {
         type: String,
-        required: true,
-        unique: [true, "This Email ID is taken"],
         validate(value) {
             if (!validator.isEmail(value)) {
                 throw new Error("Invalid Email")
@@ -23,7 +19,6 @@ const userSchema = new Schema({
     },
     password: {
         type: String,
-        required: true,
     },
     isAdmin: {
         type: Boolean,

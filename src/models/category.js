@@ -6,13 +6,10 @@ const {
 const categorySchema = new Schema({
     name: {
         type: String,
-        required: true,
-        unique: [true, "This product already exists."],
         minlength: 3
     },
     imgUrl: {
         type: String,
-        required: true
     }
 })
 

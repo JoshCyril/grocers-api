@@ -36,7 +36,8 @@ router.get("/login", async (req, res) => {
                     isValid: true,
                     message: "Auth success for [" + user.name + "]",
                     name: user.name,
-                    _id: user._id
+                    _id: user._id,
+                    isAdmin: user.isAdmin
                 });
             } else {
                 res.send({
@@ -105,6 +106,18 @@ router.get('/:id', (req, res, next) => {
     }
 });
 
+router.get('/u/:id', (req, res, next) => {
+    getDBName(req.query._db, res)
+    if (isDBExits) {
+        CtrDB.find({
+            "user_id": req.params.id
+        }).then((data) => {
+            res.send(data);
+        }).catch(next);
+    } else {
+        res.send(`DB ${req.query._db} not found`);
+    }
+});
 
 // ? add a new user to database
 router.post('/add/user', async (req, res, next) => {
