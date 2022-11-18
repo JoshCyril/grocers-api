@@ -4,7 +4,7 @@ const cors = require('cors');
 
 require("./db/conn")
 
-const port = process.env.PORT || 443
+const port = process.env.PORT || 3000
 
 app.use(cors());
 app.use(express.static('public'));
