@@ -139,9 +139,9 @@ router.post('/add/user', async (req, res, next) => {
 router.post('/add', async (req, res, next) => {
     getDBName(req.query._db, res)
     if (isDBExits) {
-
-        CtrDB.save().then(() => {
-            res.status(201).send(CtrDB);
+        const insertResult = await CtrDB.create(req.body)
+        insertResult.save().then(() => {
+            res.status(201).send(insertResult);
         }).catch((e) => {
             res.status(400).send(e);
         })
